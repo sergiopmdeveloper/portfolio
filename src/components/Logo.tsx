@@ -18,6 +18,11 @@ const LogoContainer = styled.div`
     background-color: ${theme.translucentGreen};
     transition: background-color 0.2s;
   }
+
+  &:active {
+    background-color: ${theme.translucentGreen};
+    transition: background-color 0.2s;
+  }
 `
 
 const LogoText = styled.span`

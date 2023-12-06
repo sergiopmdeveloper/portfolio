@@ -25,6 +25,11 @@ const NavItem = styled.li`
     color: ${theme.green};
     transition: color 0.2s ease;
   }
+
+  &:active ${NavItemText} {
+    color: ${theme.green};
+    transition: color 0.2s ease;
+  }
 `
 
 const NavItemNumber = styled.span`
