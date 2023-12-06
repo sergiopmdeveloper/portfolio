@@ -18,7 +18,7 @@ const NavItemText = styled.span`
 
 const NavItem = styled.li`
   list-style: none;
-  font-size: 1rem;
+  font-size: ${theme.fontSize2};
   font-family: ${theme.spaceMono};
 
   &:hover ${NavItemText} {

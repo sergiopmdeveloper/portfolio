@@ -23,6 +23,20 @@ const fonts = {
   spaceMono: 'Space Mono, monospace',
 }
 
+// Font sizes
+const fontSizes = {
+  fontSize0: '.5rem',
+  fontSize1: '.75rem',
+  fontSize2: '1rem',
+  fontSize3: '1.1rem',
+  fontSize4: '1.25rem',
+  fontSize5: '1.5rem',
+  fontSize6: '2rem',
+  fontSize7: '2.5rem',
+  fontSize8: '3rem',
+  fontSize9: '3.5rem',
+}
+
 // Screens
 const screens = {
   laptop: '1440px',
@@ -32,6 +46,7 @@ const screens = {
 export const theme = {
   ...colors,
   ...fonts,
+  ...fontSizes,
   ...screens,
   ...translucentColors,
 }

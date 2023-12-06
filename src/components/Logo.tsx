@@ -26,7 +26,7 @@ const LogoContainer = styled.div`
 `
 
 const LogoText = styled.span`
-  font-size: 1.5rem;
+  font-size: ${theme.fontSize5};
   font-family: ${theme.spaceMono};
   color: ${theme.green};
 `
