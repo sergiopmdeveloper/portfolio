@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { theme } from '../styles'
 
+// Styled components
+
 const LogoContainer = styled.div`
   width: 2.5rem;
   height: 2.5rem;
@@ -24,6 +26,10 @@ const LogoText = styled.span`
   color: ${theme.green};
 `
 
+/**
+ * Renders the logo component.
+ * @returns The logo component.
+ */
 export function Logo() {
   return (
     <LogoContainer>
