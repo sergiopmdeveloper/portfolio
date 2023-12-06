@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 // Colors
 const colors = {
@@ -12,16 +12,28 @@ const colors = {
   green: '#64ffda',
 }
 
+// Translucent colors
+const translucentColors = {
+  translucentGreen: '#64ffda4d',
+}
+
 // Fonts
 const fonts = {
   roboto: 'Roboto, sans-serif',
   spaceMono: 'Space Mono, monospace',
 }
 
+// Screens
+const screens = {
+  laptop: '1440px',
+}
+
 // Theme
 export const theme = {
   ...colors,
   ...fonts,
+  ...screens,
+  ...translucentColors,
 }
 
 // Global styles
@@ -31,4 +43,12 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     background: ${theme.navy};
   }
+`
+
+// Global styled components
+
+export const AppSection = styled.div`
+  max-width: ${theme.laptop};
+  margin: 0 auto;
+  padding: 0 2rem;
 `
