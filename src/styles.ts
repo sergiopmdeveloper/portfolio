@@ -43,6 +43,15 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     background: ${theme.navy};
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 `
 
 // Global styled components

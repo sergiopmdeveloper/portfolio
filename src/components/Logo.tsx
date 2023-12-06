@@ -28,6 +28,7 @@ const LogoText = styled.span`
 
 /**
  * Renders the logo component.
+ *
  * @returns The logo component.
  */
 export function Logo() {
