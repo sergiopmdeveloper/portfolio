@@ -1,7 +1,9 @@
 import { AppSection } from '../../styles'
 import { Logo } from '../Logo'
 import { DefaultNav } from './DefaultNav'
+import { Burger } from '../../icons/Burger'
 import styled from 'styled-components'
+import { theme } from '../../styles'
 
 // Styled components
 
@@ -17,6 +19,28 @@ const HeaderContent = styled(AppSection)`
   justify-content: space-between;
 `
 
+const StyledBurger = styled(Burger)`
+  width: 2rem;
+  fill: ${theme.green};
+  cursor: pointer;
+  display: none;
+  transition: fill 0.2s;
+
+  &:hover {
+    fill: ${theme.darkenedGreen};
+    transition: fill 0.2s;
+  }
+
+  &:active {
+    fill: ${theme.darkenedGreen};
+    transition: fill 0.2s;
+  }
+
+  @media (width <= ${theme.tablet}) {
+    display: block;
+  }
+`
+
 /**
  * Renders the header component.
  *
@@ -28,6 +52,7 @@ export function Header() {
       <HeaderContent>
         <Logo />
         <DefaultNav />
+        <StyledBurger />
       </HeaderContent>
     </HeaderContainer>
   )

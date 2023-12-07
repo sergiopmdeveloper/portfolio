@@ -17,6 +17,11 @@ const translucentColors = {
   translucentGreen: '#64ffda4d',
 }
 
+// Darkened colors
+const darkenedColors = {
+  darkenedGreen: '#00b187',
+}
+
 // Fonts
 const fonts = {
   roboto: 'Roboto, sans-serif',
@@ -40,15 +45,17 @@ const fontSizes = {
 // Screens
 const screens = {
   laptop: '1440px',
+  tablet: '768px',
 }
 
 // Theme
 export const theme = {
   ...colors,
+  ...translucentColors,
+  ...darkenedColors,
   ...fonts,
   ...fontSizes,
   ...screens,
-  ...translucentColors,
 }
 
 // Global styles
