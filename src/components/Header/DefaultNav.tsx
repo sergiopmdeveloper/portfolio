@@ -1,4 +1,5 @@
 import { DefaultLink } from './DefaultLink'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../styles'
 
@@ -21,13 +22,39 @@ const NavBlock = styled.ul`
  * @returns The rendered default navigation component.
  */
 export function DefaultNav() {
+  const [hoveredLinks, setHoveredLinks] = useState<string[]>([])
+
   return (
     <NavContainer>
       <NavBlock>
-        <DefaultLink number={1} text="Studies" link="#studies" />
-        <DefaultLink number={2} text="Career" link="#career" />
-        <DefaultLink number={3} text="Projects" link="#projects" />
-        <DefaultLink number={4} text="Contact" link="#contact" />
+        <DefaultLink
+          number={1}
+          text="Studies"
+          link="#studies"
+          hoveredLinks={hoveredLinks}
+          setHoveredLinks={setHoveredLinks}
+        />
+        <DefaultLink
+          number={2}
+          text="Career"
+          link="#career"
+          hoveredLinks={hoveredLinks}
+          setHoveredLinks={setHoveredLinks}
+        />
+        <DefaultLink
+          number={3}
+          text="Projects"
+          link="#projects"
+          hoveredLinks={hoveredLinks}
+          setHoveredLinks={setHoveredLinks}
+        />
+        <DefaultLink
+          number={4}
+          text="Contact"
+          link="#contact"
+          hoveredLinks={hoveredLinks}
+          setHoveredLinks={setHoveredLinks}
+        />
       </NavBlock>
     </NavContainer>
   )
