@@ -1,3 +1,4 @@
+import { ResponsiveNav } from './ResponsiveNav'
 import styled from 'styled-components'
 import { theme } from '../../styles'
 
@@ -16,6 +17,10 @@ const ResponsiveMenuContainer = styled.div`
   position: fixed;
   left: 0;
   top: 0;
+
+  @media (width > ${theme.tablet}) {
+    display: none;
+  }
 `
 
 const OpaqueBlock = styled.div`
@@ -28,15 +33,28 @@ const MenuContainer = styled.div`
   width: 300px;
   height: 100%;
   background-color: ${theme.lightNavy};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
+/**
+ * Renders the responsive menu.
+ *
+ * @param {ResponsiveMenuProps} props - The properties passed to the component.
+ * @param {(value: boolean) => void} props.setActiveResponsiveMenu - A function that sets the active state of the responsive menu.
+ *
+ * @returns The responsive menu.
+ */
 export function ResponsiveMenu({
   setActiveResponsiveMenu,
 }: ResponsiveMenuProps) {
   return (
     <ResponsiveMenuContainer>
       <OpaqueBlock onClick={() => setActiveResponsiveMenu(false)} />
-      <MenuContainer />
+      <MenuContainer>
+        <ResponsiveNav />
+      </MenuContainer>
     </ResponsiveMenuContainer>
   )
 }
