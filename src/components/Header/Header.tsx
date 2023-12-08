@@ -2,6 +2,8 @@ import { AppSection } from '../../styles'
 import { Logo } from '../Logo'
 import { DefaultNav } from './DefaultNav'
 import { Burger } from '../../icons/Burger'
+import { ResponsiveMenu } from './ResponsiveMenu'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../../styles'
 
@@ -47,13 +49,20 @@ const StyledBurger = styled(Burger)`
  * @returns The rendered header component.
  */
 export function Header() {
+  const [activeResponsiveMenu, setActiveResponsiveMenu] = useState(false)
+
   return (
-    <HeaderContainer>
-      <HeaderContent>
-        <Logo />
-        <DefaultNav />
-        <StyledBurger />
-      </HeaderContent>
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <HeaderContent>
+          <Logo />
+          <DefaultNav />
+          <StyledBurger onclick={() => setActiveResponsiveMenu(true)} />
+        </HeaderContent>
+      </HeaderContainer>
+      {activeResponsiveMenu && (
+        <ResponsiveMenu setActiveResponsiveMenu={setActiveResponsiveMenu} />
+      )}
+    </>
   )
 }
