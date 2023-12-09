@@ -1,3 +1,5 @@
+import { useRef, useLayoutEffect } from 'react'
+import gsap from 'gsap'
 import styled from 'styled-components'
 import { theme } from '../../styles'
 
@@ -48,8 +50,20 @@ const NavItemNumber = styled.span`
  * @returns A responsive navigation link.
  */
 export function ResponsiveLink({ number, text, link }: ResponsiveLinkProps) {
+  const linkRef = useRef<HTMLAnchorElement>(null)
+
+  useLayoutEffect(() => {
+    if (linkRef.current) {
+      gsap.fromTo(
+        linkRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.5, delay: number * 0.1 }
+      )
+    }
+  }, [number])
+
   return (
-    <a href={link}>
+    <a href={link} ref={linkRef}>
       <NavItem>
         <NavItemNumber>{number}.</NavItemNumber>
         <NavItemText>{text}</NavItemText>

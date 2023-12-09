@@ -3,7 +3,8 @@ import { Logo } from '../Logo'
 import { DefaultNav } from './DefaultNav'
 import { Burger } from '../../icons/Burger'
 import { ResponsiveMenu } from './ResponsiveMenu'
-import { useState } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
+import { gsap } from 'gsap'
 import styled from 'styled-components'
 import { theme } from '../../styles'
 
@@ -50,14 +51,35 @@ const StyledBurger = styled(Burger)`
  */
 export function Header() {
   const [activeResponsiveMenu, setActiveResponsiveMenu] = useState(false)
+  const logoRef = useRef<HTMLDivElement>(null)
+  const burgerRef = useRef<SVGSVGElement>(null)
+
+  useLayoutEffect(() => {
+    if (logoRef.current && burgerRef.current) {
+      gsap.fromTo(
+        logoRef.current,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5 }
+      )
+
+      gsap.fromTo(
+        burgerRef.current,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5, delay: 0.1 }
+      )
+    }
+  }, [])
 
   return (
     <>
       <HeaderContainer>
         <HeaderContent>
-          <Logo />
+          <Logo ref={logoRef} />
           <DefaultNav />
-          <StyledBurger onclick={() => setActiveResponsiveMenu(true)} />
+          <StyledBurger
+            onclick={() => setActiveResponsiveMenu(true)}
+            ref={burgerRef}
+          />
         </HeaderContent>
       </HeaderContainer>
       {activeResponsiveMenu && (

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import gsap from 'gsap'
 import styled from 'styled-components'
 import { theme } from '../../styles'
 
@@ -62,6 +63,7 @@ export function DefaultLink({
   setHoveredLinks,
 }: DefaultLinkProps) {
   const [inactiveLink, setInactiveLink] = useState(false)
+  const linkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
     if (hoveredLinks.length > 0 && !hoveredLinks.includes(text)) {
@@ -69,10 +71,20 @@ export function DefaultLink({
     } else {
       setInactiveLink(false)
     }
-  }, [hoveredLinks])
+  }, [hoveredLinks, text])
+
+  useLayoutEffect(() => {
+    if (linkRef.current) {
+      gsap.fromTo(
+        linkRef.current,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5, delay: number * 0.1 }
+      )
+    }
+  }, [number])
 
   return (
-    <a href={link}>
+    <a href={link} ref={linkRef}>
       <NavItem
         onMouseEnter={() => setHoveredLinks([text])}
         onMouseLeave={() => setHoveredLinks([])}
