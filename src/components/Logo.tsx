@@ -2,12 +2,6 @@ import { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { theme } from '../styles'
 
-// Types
-
-interface LogoProps {
-  ref?: Ref<HTMLDivElement>
-}
-
 // Styled components
 
 const LogoContainer = styled.div`
@@ -44,7 +38,7 @@ const LogoText = styled.span`
  * @param ref - The ref to be forwarded to the LogoContainer div.
  * @returns The logo component.
  */
-export const Logo = forwardRef<HTMLDivElement, LogoProps>(function Logo(
+export const Logo = forwardRef(function Logo(
   _props,
   ref?: Ref<HTMLDivElement>
 ) {
