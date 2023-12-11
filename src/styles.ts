@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 // Colors
 const colors = {
@@ -12,16 +12,50 @@ const colors = {
   green: '#64ffda',
 }
 
+// Translucent colors
+const translucentColors = {
+  translucentGreen: '#64ffda4d',
+}
+
+// Darkened colors
+const darkenedColors = {
+  darkenedGreen: '#00b187',
+}
+
 // Fonts
 const fonts = {
   roboto: 'Roboto, sans-serif',
   spaceMono: 'Space Mono, monospace',
 }
 
+// Font sizes
+const fontSizes = {
+  fontSize0: '.5rem',
+  fontSize1: '.75rem',
+  fontSize2: '1rem',
+  fontSize3: '1.1rem',
+  fontSize4: '1.25rem',
+  fontSize5: '1.5rem',
+  fontSize6: '2rem',
+  fontSize7: '2.5rem',
+  fontSize8: '3rem',
+  fontSize9: '3.5rem',
+}
+
+// Screens
+const screens = {
+  laptop: '1440px',
+  tablet: '768px',
+}
+
 // Theme
 export const theme = {
   ...colors,
+  ...translucentColors,
+  ...darkenedColors,
   ...fonts,
+  ...fontSizes,
+  ...screens,
 }
 
 // Global styles
@@ -31,4 +65,21 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     background: ${theme.navy};
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+`
+
+// Global styled components
+
+export const AppSection = styled.div`
+  max-width: ${theme.laptop};
+  margin: 0 auto;
+  padding: 0 2rem;
 `
