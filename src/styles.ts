@@ -46,6 +46,8 @@ const fontSizes = {
 const screens = {
   laptop: '1440px',
   tablet: '768px',
+  largeMobile: '480px',
+  smallMobile: '360px',
 }
 
 // Theme
@@ -82,4 +84,8 @@ export const AppSection = styled.div`
   max-width: ${theme.laptop};
   margin: 0 auto;
   padding: 0 2rem;
+
+  @media (width <= ${theme.largeMobile}) {
+    padding: 0 1.5rem;
+  }
 `

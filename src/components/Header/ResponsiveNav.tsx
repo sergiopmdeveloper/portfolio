@@ -2,6 +2,12 @@ import { ResponsiveLink } from './ResponsiveLink'
 import styled from 'styled-components'
 import { links } from '../../content/header'
 
+// Types
+
+type ResponsiveNavProps = {
+  hideMenu: () => void
+}
+
 // Styled components
 
 const NavBlock = styled.ul`
@@ -13,9 +19,12 @@ const NavBlock = styled.ul`
 /**
  * Renders the responsive navigation.
  *
+ * @param {ResponsiveNavProps} props - The properties passed to the component.
+ * @param {() => void} props.hideMenu - The function to hide the menu.
+ *
  * @returns The responsive navigation.
  */
-export function ResponsiveNav() {
+export function ResponsiveNav({ hideMenu }: ResponsiveNavProps) {
   return (
     <NavBlock>
       {links.map((link, index) => (
@@ -24,6 +33,7 @@ export function ResponsiveNav() {
           number={index + 1}
           text={link.text}
           link={link.link}
+          hideMenu={hideMenu}
         />
       ))}
     </NavBlock>

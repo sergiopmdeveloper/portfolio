@@ -38,6 +38,14 @@ const MenuContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (width <= ${theme.largeMobile}) {
+    width: 250px;
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    width: 225px;
+  }
 `
 
 /**
@@ -82,7 +90,7 @@ export function ResponsiveMenu({
     <ResponsiveMenuContainer>
       <OpaqueBlock onClick={hideMenu} ref={opaqueRef} />
       <MenuContainer ref={menuRef}>
-        <ResponsiveNav />
+        <ResponsiveNav hideMenu={hideMenu} />
       </MenuContainer>
     </ResponsiveMenuContainer>
   )
