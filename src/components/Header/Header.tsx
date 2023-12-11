@@ -3,16 +3,36 @@ import { Logo } from '../Logo'
 import { DefaultNav } from './DefaultNav'
 import { Burger } from '../../icons/Burger'
 import { ResponsiveMenu } from './ResponsiveMenu'
-import { useState, useRef, useLayoutEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { useScrollPosition } from '../../hooks/useScrollPosition'
 import { gsap } from 'gsap'
 import styled from 'styled-components'
 import { theme } from '../../styles'
 
 // Styled components
 
-const HeaderContainer = styled.header`
+const HeaderContainer = styled.header<{
+  $scrollingDown: boolean
+  $actualScrollPosition: number
+  $activeResponsiveMenu: boolean
+}>`
   width: 100%;
   height: 6rem;
+  position: sticky;
+  top: 0;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+
+  ${props =>
+    props.$actualScrollPosition > 0 &&
+    'background-color: ' + theme.lightNavy + ';'};
+
+  ${props => props.$scrollingDown && 'transform: translateY(-100%);'};
+
+  ${props =>
+    props.$activeResponsiveMenu &&
+    '@media (width <= ' + theme.tablet + ') {transform: translateY(-100%);}'};
 `
 
 const HeaderContent = styled(AppSection)`
@@ -51,8 +71,18 @@ const StyledBurger = styled(Burger)`
  */
 export function Header() {
   const [activeResponsiveMenu, setActiveResponsiveMenu] = useState(false)
+  const [scrollingDown, setScrollingDown] = useState(false)
+  const { actualScrollPosition, previousScrollPosition } = useScrollPosition()
   const logoRef = useRef<HTMLDivElement>(null)
   const burgerRef = useRef<SVGSVGElement>(null)
+
+  useEffect(() => {
+    if (actualScrollPosition > previousScrollPosition) {
+      setScrollingDown(true)
+    } else if (actualScrollPosition < previousScrollPosition) {
+      setScrollingDown(false)
+    }
+  }, [actualScrollPosition, previousScrollPosition])
 
   useLayoutEffect(() => {
     if (logoRef.current && burgerRef.current) {
@@ -72,7 +102,11 @@ export function Header() {
 
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer
+        $scrollingDown={scrollingDown}
+        $actualScrollPosition={actualScrollPosition}
+        $activeResponsiveMenu={activeResponsiveMenu}
+      >
         <HeaderContent>
           <Logo ref={logoRef} />
           <DefaultNav />
