@@ -9,6 +9,7 @@ type ResponsiveLinkProps = {
   number: number
   text: string
   link: string
+  hideMenu: () => void
 }
 
 // Styled components
@@ -46,10 +47,16 @@ const NavItemNumber = styled.span`
  * @param {number} props.number - The number of the link.
  * @param {string} props.text - The text to be displayed for the link.
  * @param {string} props.link - The URL to which the link points.
+ * @param {() => void} props.hideMenu - The function to hide the menu.
  *
  * @returns A responsive navigation link.
  */
-export function ResponsiveLink({ number, text, link }: ResponsiveLinkProps) {
+export function ResponsiveLink({
+  number,
+  text,
+  link,
+  hideMenu,
+}: ResponsiveLinkProps) {
   const linkRef = useRef<HTMLAnchorElement>(null)
 
   useLayoutEffect(() => {
@@ -63,7 +70,7 @@ export function ResponsiveLink({ number, text, link }: ResponsiveLinkProps) {
   }, [number])
 
   return (
-    <a href={link} ref={linkRef}>
+    <a href={link} ref={linkRef} onClick={hideMenu}>
       <NavItem>
         <NavItemNumber>{number}.</NavItemNumber>
         <NavItemText>{text}</NavItemText>

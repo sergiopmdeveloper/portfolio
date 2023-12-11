@@ -82,7 +82,7 @@ export function ResponsiveMenu({
     <ResponsiveMenuContainer>
       <OpaqueBlock onClick={hideMenu} ref={opaqueRef} />
       <MenuContainer ref={menuRef}>
-        <ResponsiveNav />
+        <ResponsiveNav hideMenu={hideMenu} />
       </MenuContainer>
     </ResponsiveMenuContainer>
   )
