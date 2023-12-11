@@ -33,6 +33,10 @@ const HeaderContainer = styled.header<{
   ${props =>
     props.$activeResponsiveMenu &&
     '@media (width <= ' + theme.tablet + ') {transform: translateY(-100%);}'};
+
+  @media (width <= ${theme.largeMobile}) {
+    height: 5rem;
+  }
 `
 
 const HeaderContent = styled(AppSection)`

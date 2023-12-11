@@ -33,6 +33,14 @@ const NavItem = styled.li`
     color: ${theme.green};
     transition: color 0.2s ease;
   }
+
+  @media (width <= ${theme.largeMobile}) {
+    font-size: ${theme.fontSize4};
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    font-size: ${theme.fontSize3};
+  }
 `
 
 const NavItemNumber = styled.span`
