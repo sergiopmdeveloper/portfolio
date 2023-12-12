@@ -1,6 +1,8 @@
 import { ButtonWithIcon } from '../../ui/Button'
 import { Github } from '../../icons/GitHub'
 import { Resume } from '../../icons/Resume'
+import { useRef, useLayoutEffect } from 'react'
+import gsap from 'gsap'
 import styled from 'styled-components'
 import { theme, AppSection } from '../../styles'
 
@@ -85,13 +87,60 @@ const WelcomeButtonsContainer = styled.div`
  * @returns The rendered Welcome component.
  */
 export function Welcome() {
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const descriptionRef = useRef<HTMLParagraphElement>(null)
+  const buttonsRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    if (titleRef.current && descriptionRef.current && buttonsRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          delay: 0.3,
+        }
+      )
+
+      gsap.fromTo(
+        descriptionRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          delay: 0.4,
+        }
+      )
+
+      gsap.fromTo(
+        buttonsRef.current,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          delay: 0.5,
+        }
+      )
+    }
+  }, [])
+
   return (
     <AppSection>
       <WelcomeContainer>
-        <WelcomeTitle>
+        <WelcomeTitle ref={titleRef}>
           I'm Sergio Peña and I'm a full stack developer
         </WelcomeTitle>
-        <WelcomeDescription>
+        <WelcomeDescription ref={descriptionRef}>
           Hi! I'm Sergio Peña and I'm a{' '}
           <HighlightedPart>full stack developer</HighlightedPart>. Welcome to my
           portfolio where you will find everything you need to know about me
@@ -102,7 +151,7 @@ export function Welcome() {
           do with coding is welcome.{' '}
           <HighlightedPart>Let's work together?</HighlightedPart>
         </WelcomeDescription>
-        <WelcomeButtonsContainer>
+        <WelcomeButtonsContainer ref={buttonsRef}>
           <a href="https://github.com/sergiopmdeveloper" target="_blank">
             <ButtonWithIcon text="GitHub" Icon={Github} />
           </a>
