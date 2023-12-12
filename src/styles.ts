@@ -40,6 +40,8 @@ const fontSizes = {
   fontSize7: '2.5rem',
   fontSize8: '3rem',
   fontSize9: '3.5rem',
+  fontSize10: '4rem',
+  fontSize11: '5rem',
 }
 
 // Screens
@@ -68,6 +70,10 @@ export const GlobalStyles = createGlobalStyle`
     background: ${theme.navy};
   }
 
+  h1 {
+    margin: 0;
+  }
+
   a {
     text-decoration: none;
   }
@@ -75,6 +81,11 @@ export const GlobalStyles = createGlobalStyle`
   ul {
     margin: 0;
     padding: 0;
+  }
+
+  button {
+    border: none;
+    cursor: pointer;
   }
 `
 

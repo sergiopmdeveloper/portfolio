@@ -20,6 +20,7 @@ const HeaderContainer = styled.header<{
   height: 6rem;
   position: sticky;
   top: 0;
+  z-index: 99;
   transition:
     transform 0.2s,
     background-color 0.2s;
