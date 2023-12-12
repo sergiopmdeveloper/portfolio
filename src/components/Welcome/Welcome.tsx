@@ -34,6 +34,11 @@ const WelcomeDescription = styled.p`
   margin-bottom: 3rem;
 `
 
+const HighlightedPart = styled.span`
+  font-weight: 900;
+  color: ${theme.green};
+`
+
 const WelcomeButtonsContainer = styled.div`
   display: flex;
   gap: 0.5rem;
@@ -52,12 +57,15 @@ export function Welcome() {
           I'm Sergio Peña and I'm a full stack developer
         </WelcomeTitle>
         <WelcomeDescription>
-          Hi! I'm Sergio Peña and I'm a full stack developer. Welcome to my
+          Hi! I'm Sergio Peña and I'm a{' '}
+          <HighlightedPart>full stack developer</HighlightedPart>. Welcome to my
           portfolio where you will find everything you need to know about me
-          professionally. Software development is my profession and my passion.
-          Backend, frontend, machine learning, scripting, automation, open
-          source... Everything that has to do with coding is welcome. Let's work
-          together?
+          professionally. Software development is my{' '}
+          <HighlightedPart>profession</HighlightedPart> and my{' '}
+          <HighlightedPart>passion</HighlightedPart>. Backend, frontend, machine
+          learning, scripting, automation, open source... Everything that has to
+          do with coding is welcome.{' '}
+          <HighlightedPart>Let's work together?</HighlightedPart>
         </WelcomeDescription>
         <WelcomeButtonsContainer>
           <a href="https://github.com/sergiopmdeveloper" target="_blank">
