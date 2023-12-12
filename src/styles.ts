@@ -40,7 +40,8 @@ const fontSizes = {
   fontSize7: '2.5rem',
   fontSize8: '3rem',
   fontSize9: '3.5rem',
-  fontSize10: '5rem',
+  fontSize10: '4rem',
+  fontSize11: '5rem',
 }
 
 // Screens

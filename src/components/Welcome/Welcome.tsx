@@ -14,16 +14,34 @@ const WelcomeContainer = styled.main`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+
+  @media (width <= ${theme.largeMobile}) {
+    height: auto;
+    margin-top: 3rem;
+  }
 `
 
 const WelcomeTitle = styled.h1`
   font-family: ${theme.roboto};
-  font-size: ${theme.fontSize10};
+  font-size: ${theme.fontSize11};
   font-weight: 900;
   text-align: center;
   color: ${theme.white};
   margin-bottom: 2rem;
   line-height: 1;
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize10};
+  }
+
+  @media (width <= ${theme.largeMobile}) {
+    font-size: ${theme.fontSize9};
+    text-align: left;
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    font-size: ${theme.fontSize8};
+  }
 `
 
 const WelcomeDescription = styled.p`
@@ -32,6 +50,18 @@ const WelcomeDescription = styled.p`
   text-align: center;
   color: ${theme.slate};
   margin-bottom: 3rem;
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize3};
+  }
+
+  @media (width <= ${theme.largeMobile}) {
+    text-align: left;
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    font-size: ${theme.fontSize2};
+  }
 `
 
 const HighlightedPart = styled.span`
@@ -42,6 +72,11 @@ const HighlightedPart = styled.span`
 const WelcomeButtonsContainer = styled.div`
   display: flex;
   gap: 0.5rem;
+
+  @media (width <= ${theme.largeMobile}) {
+    width: 100%;
+    flex-direction: column;
+  }
 `
 
 /**

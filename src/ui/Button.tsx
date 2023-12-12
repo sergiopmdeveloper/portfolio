@@ -36,6 +36,19 @@ export const Button = styled.button`
       background-color 0.2s,
       color 0.2s;
   }
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize3};
+  }
+
+  @media (width <= ${theme.largeMobile}) {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    font-size: ${theme.fontSize2};
+  }
 `
 
 const ButtonWithIconWrapper = styled(Button)`
