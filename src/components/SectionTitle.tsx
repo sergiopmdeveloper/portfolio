@@ -21,12 +21,20 @@ const Number = styled.span`
   font-family: ${theme.spaceMono};
   font-size: ${theme.fontSize7};
   color: ${theme.green};
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize6};
+  }
 `
 
 const Text = styled.h1`
   font-family: ${theme.roboto};
   font-size: ${theme.fontSize7};
   color: ${theme.white};
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize6};
+  }
 `
 
 /**

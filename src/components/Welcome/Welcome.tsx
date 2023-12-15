@@ -29,7 +29,7 @@ const WelcomeTitle = styled.h1`
   font-weight: 900;
   text-align: center;
   color: ${theme.white};
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   line-height: 1;
 
   @media (width <= ${theme.tablet}) {

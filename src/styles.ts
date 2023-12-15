@@ -47,6 +47,7 @@ const fontSizes = {
 // Screens
 const screens = {
   laptop: '1440px',
+  smallLaptop: '1024px',
   tablet: '768px',
   largeMobile: '480px',
   smallMobile: '360px',
