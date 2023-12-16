@@ -18,7 +18,8 @@ const WelcomeContainer = styled.main`
   margin: 0 auto;
 
   @media (width <= ${theme.largeMobile}) {
-    height: auto;
+    height: calc(100vh - 5rem);
+    justify-content: flex-start;
     margin-top: 3rem;
   }
 `
@@ -37,12 +38,12 @@ const WelcomeTitle = styled.h1`
   }
 
   @media (width <= ${theme.largeMobile}) {
-    font-size: ${theme.fontSize9};
+    font-size: ${theme.fontSize8};
     text-align: left;
   }
 
   @media (width <= ${theme.smallMobile}) {
-    font-size: ${theme.fontSize8};
+    font-size: ${theme.fontSize7};
   }
 `
 
@@ -58,11 +59,8 @@ const WelcomeDescription = styled.p`
   }
 
   @media (width <= ${theme.largeMobile}) {
-    text-align: left;
-  }
-
-  @media (width <= ${theme.smallMobile}) {
     font-size: ${theme.fontSize2};
+    text-align: left;
   }
 `
 

@@ -2,8 +2,10 @@ import { IconProps } from './types'
 
 /**
  * Renders the Resume icon.
+ *
  * @param {IconProps} props - The icon props.
  * @param {string} props.className - The class name for the icon.
+ *
  * @returns The rendered Resume icon.
  */
 export function Resume({ className }: IconProps) {
