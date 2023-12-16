@@ -116,7 +116,7 @@ export function Header() {
         $activeResponsiveMenu={activeResponsiveMenu}
       >
         <HeaderContent>
-          <Logo ref={logoRef} />
+          <Logo onClick={() => window.scrollTo(0, 0)} ref={logoRef} />
           <DefaultNav />
           <StyledBurger
             onclick={() => setActiveResponsiveMenu(true)}

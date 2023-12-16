@@ -1,6 +1,12 @@
-import { forwardRef, Ref } from 'react'
+import { forwardRef } from 'react'
 import styled from 'styled-components'
 import { theme } from '../styles'
+
+// Types
+
+type LogoProps = {
+  onClick?: () => void
+}
 
 // Styled components
 
@@ -35,16 +41,18 @@ const LogoText = styled.span`
 /**
  * Renders the logo component.
  *
- * @param ref - The ref to be forwarded to the LogoContainer div.
+ * @param {LogoProps} props - The properties passed to the component.
+ * @param {() => void} props.onClick - The click event handler for the logo.
+ * @param {Ref<HTMLDivElement>} ref - The ref to be forwarded to the LogoContainer div.
+ *
  * @returns The logo component.
  */
-export const Logo = forwardRef(function Logo(
-  _props,
-  ref?: Ref<HTMLDivElement>
-) {
-  return (
-    <LogoContainer ref={ref}>
-      <LogoText>S</LogoText>
-    </LogoContainer>
-  )
-})
+export const Logo = forwardRef<HTMLDivElement, LogoProps>(
+  ({ onClick }, ref) => {
+    return (
+      <LogoContainer onClick={onClick} ref={ref}>
+        <LogoText>S</LogoText>
+      </LogoContainer>
+    )
+  }
+)
