@@ -7,7 +7,7 @@ import { type IconProps } from './types'
  * @param {IconProps} props - The properties passed to the component.
  * @param {string} props.className - The class name to be applied to the icon.
  * @param {() => void} props.onclick - The click event handler for the icon.
- * @param {Ref<SVGSVGElement>} props.ref - The ref to be applied to the SVG element.
+ * @param {Ref<SVGSVGElement>} ref - The ref to be applied to the SVG element.
  *
  * @returns A burger icon.
  */

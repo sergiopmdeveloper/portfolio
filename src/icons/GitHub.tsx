@@ -2,8 +2,10 @@ import { IconProps } from './types'
 
 /**
  * Renders the GitHub icon.
+ *
  * @param {IconProps} props - The icon props.
  * @param {string} props.className - The class name for the icon.
+ *
  * @returns The rendered GitHub icon.
  */
 export function Github({ className }: IconProps) {

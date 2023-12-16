@@ -79,6 +79,7 @@ const ButtonWithIconWrapper = styled(Button)`
  * @param {ButtonWithIconProps} props - The component props.
  * @param {string} props.text - The text for the button.
  * @param {React.ComponentType} props.Icon - The icon component.
+ *
  * @returns The rendered ButtonWithIcon component.
  */
 export function ButtonWithIcon({ text, Icon }: ButtonWithIconProps) {
