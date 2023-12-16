@@ -29,7 +29,10 @@ const HeaderContainer = styled.header<{
     props.$actualScrollPosition > 0 &&
     'background-color: ' + theme.lightNavy + ';'};
 
-  ${props => props.$scrollingDown && 'transform: translateY(-100%);'};
+  ${props =>
+    props.$scrollingDown &&
+    props.$actualScrollPosition > 0 &&
+    'transform: translateY(-100%);'};
 
   ${props =>
     props.$activeResponsiveMenu &&
