@@ -47,6 +47,7 @@ const fontSizes = {
 // Screens
 const screens = {
   laptop: '1440px',
+  smallLaptop: '1024px',
   tablet: '768px',
   largeMobile: '480px',
   smallMobile: '360px',
@@ -64,6 +65,10 @@ export const theme = {
 
 // Global styles
 export const GlobalStyles = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -71,6 +76,18 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  p {
     margin: 0;
   }
 
@@ -93,7 +110,7 @@ export const GlobalStyles = createGlobalStyle`
 
 export const AppSection = styled.div`
   max-width: ${theme.laptop};
-  margin: 0 auto;
+  margin: 0rem auto 8rem auto;
   padding: 0 2rem;
 
   @media (width <= ${theme.largeMobile}) {
