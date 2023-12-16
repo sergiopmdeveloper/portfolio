@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import styled from 'styled-components'
 import { theme } from '../styles'
 
@@ -43,14 +44,19 @@ const Text = styled.h1`
  * @param {SectionTitleProps} props - The props of the component.
  * @param {number} props.number - The number of the section.
  * @param {string} props.text - The text of the section title.
+ * @param {Ref<HTMLDivElement>} ref - The ref object.
  *
  * @returns  The rendered section title component.
  */
-export function SectionTitle({ number, text }: SectionTitleProps) {
-  return (
-    <SectionTitleContainer>
-      <Number>{number}.</Number>
-      <Text>{text}</Text>
-    </SectionTitleContainer>
-  )
-}
+export const SectionTitle = forwardRef<HTMLDivElement, SectionTitleProps>(
+  ({ number, text }, ref) => {
+    return (
+      <SectionTitleContainer ref={ref}>
+        <Number>{number}.</Number>
+        <Text>{text}</Text>
+      </SectionTitleContainer>
+    )
+  }
+)
+
+export default SectionTitle

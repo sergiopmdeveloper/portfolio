@@ -1,7 +1,14 @@
 import { SectionTitle } from '../SectionTitle'
+import { useRef, RefObject, useLayoutEffect, createRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styled from 'styled-components'
 import { theme, AppSection } from '../../styles'
 import { studies } from '../../content/studies'
+
+// Register scroll trigger plugin
+
+gsap.registerPlugin(ScrollTrigger)
 
 // Styled components
 
@@ -121,12 +128,56 @@ const StudyDescription = styled.p`
  * @returns The rendered Studies component.
  */
 export function Studies() {
+  const sectionTitleRef = useRef<HTMLDivElement>(null)
+  const studiesRef = useRef<HTMLDivElement>(null)
+  const studyRefs: RefObject<HTMLDivElement>[] = Array.from(
+    { length: studies.length },
+    () => createRef()
+  )
+
+  useLayoutEffect(() => {
+    if (sectionTitleRef.current) {
+      gsap.fromTo(
+        sectionTitleRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          scrollTrigger: sectionTitleRef.current,
+        }
+      )
+    }
+
+    if (studiesRef.current) {
+      gsap.fromTo(
+        studiesRef.current,
+        { borderLeftWidth: '1px', borderLeftColor: 'rgba(0, 0, 0, 0)' },
+        {
+          borderLeftColor: theme.green,
+          duration: 0.5,
+          scrollTrigger: studiesRef.current,
+        }
+      )
+    }
+
+    studyRefs.forEach(studyRef => {
+      if (studyRef.current) {
+        gsap.fromTo(
+          studyRef.current,
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 0.5, scrollTrigger: studyRef.current }
+        )
+      }
+    })
+  }, [studyRefs])
+
   return (
     <AppSection id="studies">
-      <SectionTitle number={1} text="Studies" />
-      <StudiesContainer>
+      <SectionTitle number={1} text="Studies" ref={sectionTitleRef} />
+      <StudiesContainer ref={studiesRef}>
         {studies.map((study, index) => (
-          <StudyWrapper key={index}>
+          <StudyWrapper key={index} ref={studyRefs[index]}>
             <Study>
               <StudyDate>{study.date}</StudyDate>
               <StudieTitle>{study.title}</StudieTitle>
