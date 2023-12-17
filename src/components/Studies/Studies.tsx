@@ -12,7 +12,7 @@ import { useRef, RefObject, useLayoutEffect, createRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { theme, AppSection } from '../../styles'
-import { studies } from '../../content/studies'
+import { studies } from '../../content/linearContent'
 
 // Register scroll trigger plugin
 
@@ -77,7 +77,7 @@ export function Studies() {
             <Content>
               <ContentDate>{study.date}</ContentDate>
               <ContentTitle>{study.title}</ContentTitle>
-              <ContentSubtitle>{study.school}</ContentSubtitle>
+              <ContentSubtitle>{study.subtitle}</ContentSubtitle>
             </Content>
             <ContentDescription>{study.description}</ContentDescription>
           </ContentWrapper>
