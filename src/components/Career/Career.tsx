@@ -25,8 +25,8 @@ gsap.registerPlugin(ScrollTrigger)
  */
 export function Career() {
   const sectionTitleRef = useRef<HTMLDivElement>(null)
-  const studiesRef = useRef<HTMLDivElement>(null)
-  const studyRefs: RefObject<HTMLDivElement>[] = Array.from(
+  const jobsRef = useRef<HTMLDivElement>(null)
+  const jobRefs: RefObject<HTMLDivElement>[] = Array.from(
     { length: career.length },
     () => createRef()
   )
@@ -45,35 +45,35 @@ export function Career() {
       )
     }
 
-    if (studiesRef.current) {
+    if (jobsRef.current) {
       gsap.fromTo(
-        studiesRef.current,
+        jobsRef.current,
         { borderLeftWidth: '1px', borderLeftColor: 'rgba(0, 0, 0, 0)' },
         {
           borderLeftColor: theme.green,
           duration: 0.5,
-          scrollTrigger: studiesRef.current,
+          scrollTrigger: jobsRef.current,
         }
       )
     }
 
-    studyRefs.forEach(studyRef => {
-      if (studyRef.current) {
+    jobRefs.forEach(jobRef => {
+      if (jobRef.current) {
         gsap.fromTo(
-          studyRef.current,
+          jobRef.current,
           { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.5, scrollTrigger: studyRef.current }
+          { opacity: 1, y: 0, duration: 0.5, scrollTrigger: jobRef.current }
         )
       }
     })
-  }, [studyRefs])
+  }, [jobRefs])
 
   return (
     <AppSection id="career">
       <SectionTitle number={2} text="Career" ref={sectionTitleRef} />
-      <ContentContainer ref={studiesRef}>
+      <ContentContainer ref={jobsRef}>
         {career.map((study, index) => (
-          <ContentWrapper key={index} ref={studyRefs[index]}>
+          <ContentWrapper key={index} ref={jobRefs[index]}>
             <Content>
               <ContentDate>{study.date}</ContentDate>
               <ContentTitle>{study.title}</ContentTitle>
