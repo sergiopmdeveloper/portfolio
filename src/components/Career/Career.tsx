@@ -12,22 +12,22 @@ import { useRef, RefObject, useLayoutEffect, createRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { theme, AppSection } from '../../styles'
-import { studies } from '../../content/linearContent'
+import { career } from '../../content/linearContent'
 
 // Register scroll trigger plugin
 
 gsap.registerPlugin(ScrollTrigger)
 
 /**
- * Renders the Studies component.
+ * Renders the Career component.
  *
- * @returns The rendered Studies component.
+ * @returns The rendered Career component.
  */
-export function Studies() {
+export function Career() {
   const sectionTitleRef = useRef<HTMLDivElement>(null)
-  const studiesRef = useRef<HTMLDivElement>(null)
-  const studyRefs: RefObject<HTMLDivElement>[] = Array.from(
-    { length: studies.length },
+  const jobsRef = useRef<HTMLDivElement>(null)
+  const jobRefs: RefObject<HTMLDivElement>[] = Array.from(
+    { length: career.length },
     () => createRef()
   )
 
@@ -45,35 +45,35 @@ export function Studies() {
       )
     }
 
-    if (studiesRef.current) {
+    if (jobsRef.current) {
       gsap.fromTo(
-        studiesRef.current,
+        jobsRef.current,
         { borderLeftWidth: '1px', borderLeftColor: 'rgba(0, 0, 0, 0)' },
         {
           borderLeftColor: theme.green,
           duration: 0.5,
-          scrollTrigger: studiesRef.current,
+          scrollTrigger: jobsRef.current,
         }
       )
     }
 
-    studyRefs.forEach(studyRef => {
-      if (studyRef.current) {
+    jobRefs.forEach(jobRef => {
+      if (jobRef.current) {
         gsap.fromTo(
-          studyRef.current,
+          jobRef.current,
           { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.5, scrollTrigger: studyRef.current }
+          { opacity: 1, y: 0, duration: 0.5, scrollTrigger: jobRef.current }
         )
       }
     })
-  }, [studyRefs])
+  }, [jobRefs])
 
   return (
-    <AppSection id="studies">
-      <SectionTitle number={1} text="Studies" ref={sectionTitleRef} />
-      <ContentContainer ref={studiesRef}>
-        {studies.map((study, index) => (
-          <ContentWrapper key={index} ref={studyRefs[index]}>
+    <AppSection id="career">
+      <SectionTitle number={2} text="Career" ref={sectionTitleRef} />
+      <ContentContainer ref={jobsRef}>
+        {career.map((study, index) => (
+          <ContentWrapper key={index} ref={jobRefs[index]}>
             <Content>
               <ContentDate>{study.date}</ContentDate>
               <ContentTitle>{study.title}</ContentTitle>
