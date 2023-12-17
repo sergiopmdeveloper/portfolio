@@ -39,3 +39,34 @@ export const studies: LinearContent[] = [
       'Data Analytics Bootcamp with Python held in Amsterdam. Exploratory data analysis. Data visualization using graphs and tables. Application of supervised and unsupervised Machine Learning models for better decision making within a business. Web Scraping.',
   },
 ]
+
+export const career: LinearContent[] = [
+  {
+    date: 'jan 2020 - mar 2022',
+    title: 'Junior Data Analyst',
+    subtitle: 'Vectoriam Digital Marketing',
+    description:
+      'Data Analyst within the Digital Marketing world. Analysis of paid media campaigns. Conducting audits and consulting to companies in the fashion industry. Analysis and prediction of e-commerce sales. Providing insights to improve decision making.',
+  },
+  {
+    date: 'mar 2022 - jul 2022',
+    title: 'Junior Data Analyst',
+    subtitle: 'Accenture',
+    description:
+      'Data Analyst within the supply chain industry. Participation in a fraudulent warranty detection project for an automotive group where my role was to manage and implement the reporting part. Generation of ETLs and visualization of the main KPIs of the project.',
+  },
+  {
+    date: 'nov 2022 - jun 2023',
+    title: 'Junior Backend Developer',
+    subtitle: 'Serquo',
+    description:
+      'Backend Developer within the world of Advertising and Marketing. Working from Serquo for a remote client called t2ó. Implementation of new functionalities within the internal tools of the company. Generation and maintenance of ETLs. Working with Scrum.',
+  },
+  {
+    date: 'jun 2023 - actuality',
+    title: 'Junior Backend Developer',
+    subtitle: 't2ó',
+    description:
+      'After working as an outsourcer at the company from Serquo, hired internally within the company. Everything done above plus: optimizing the performance of our processes in terms of efficiency and resource consumption and developing connectors to advertising platforms.',
+  },
+]
