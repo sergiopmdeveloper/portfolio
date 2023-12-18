@@ -1,5 +1,5 @@
 import SectionTitle from '../SectionTitle'
-import { Button } from '../../ui/Button'
+import { Project } from './Project'
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -52,85 +52,6 @@ const ProjectsContainer = styled.div`
   @media (width <= ${theme.smallMobile}) {
     height: 22.5rem;
   }
-`
-
-const Project = styled.div`
-  position: relative;
-  min-width: 32.5rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: ${theme.lightNavy};
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  padding: 1.5rem;
-
-  @media (width <= ${theme.smallLaptop}) {
-    min-width: 25rem;
-  }
-
-  @media (width <= ${theme.tablet}) {
-    min-width: 22.5rem;
-  }
-
-  @media (width <= ${theme.largeMobile}) {
-    min-width: 20rem;
-  }
-
-  @media (width <= ${theme.smallMobile}) {
-    min-width: 100%;
-  }
-`
-
-const ProjectTitle = styled.h2`
-  font-family: ${theme.roboto};
-  font-size: ${theme.fontSize6};
-  color: ${theme.white};
-
-  @media (width <= ${theme.smallLaptop}) {
-    font-size: ${theme.fontSize5};
-  }
-
-  @media (width <= ${theme.tablet}) {
-    font-size: ${theme.fontSize4};
-  }
-`
-
-const ProjectDescription = styled.p`
-  font-family: ${theme.roboto};
-  font-size: ${theme.fontSize4};
-  color: ${theme.lightSlate};
-
-  @media (width <= ${theme.smallLaptop}) {
-    font-size: ${theme.fontSize3};
-  }
-
-  @media (width <= ${theme.tablet}) {
-    font-size: ${theme.fontSize2};
-  }
-`
-
-const ProjectLink = styled.a`
-  width: min-content;
-`
-
-const ProjectTechnologies = styled.div`
-  position: absolute;
-  display: flex;
-  gap: 0.5rem;
-  bottom: 1rem;
-  right: 1rem;
-
-  @media (width <= ${theme.largeMobile}) {
-    position: initial;
-  }
-`
-
-const ProjectTechnology = styled.span`
-  font-family: ${theme.spaceMono};
-  font-size: ${theme.fontSize1};
-  color: ${theme.slate};
 `
 
 const SeeMore = styled.a`
@@ -206,18 +127,7 @@ export function Projects() {
       <SectionTitle number={3} text="Projects" ref={sectionTitleRef} />
       <ProjectsContainer ref={projectsRef}>
         {projects.map((project, index) => (
-          <Project key={index}>
-            <ProjectTitle>{project.title}</ProjectTitle>
-            <ProjectDescription>{project.description}</ProjectDescription>
-            <ProjectLink href={project.link} target="_blank">
-              <Button>Repository</Button>
-            </ProjectLink>
-            <ProjectTechnologies>
-              {project.technologies.map((technology, index) => (
-                <ProjectTechnology key={index}>{technology}</ProjectTechnology>
-              ))}
-            </ProjectTechnologies>
-          </Project>
+          <Project key={index} {...project} />
         ))}
         <SeeMore
           href="https://github.com/sergiopmdeveloper?tab=repositories"
