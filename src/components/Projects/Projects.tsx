@@ -123,7 +123,7 @@ export function Projects() {
   }, [])
 
   return (
-    <AppSection>
+    <AppSection id="projects">
       <SectionTitle number={3} text="Projects" ref={sectionTitleRef} />
       <ProjectsContainer ref={projectsRef}>
         {projects.map((project, index) => (
