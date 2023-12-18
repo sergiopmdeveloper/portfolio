@@ -1,6 +1,8 @@
 import SectionTitle from '../SectionTitle'
+import { Button } from '../../ui/Button'
 import styled from 'styled-components'
 import { theme, AppSection } from '../../styles'
+import { projects } from '../../content/projects'
 
 // Styled components
 
@@ -27,10 +29,46 @@ const ProjectsContainer = styled.div`
 `
 
 const Project = styled.div`
+  position: relative;
   min-width: 30rem;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: ${theme.lightNavy};
   border-radius: 0.5rem;
+  box-sizing: border-box;
+  padding: 1.5rem;
+`
+
+const ProjectTitle = styled.h2`
+  font-family: ${theme.roboto};
+  font-size: ${theme.fontSize6};
+  color: ${theme.white};
+`
+
+const ProjectDescription = styled.p`
+  font-family: ${theme.roboto};
+  font-size: ${theme.fontSize4};
+  color: ${theme.lightSlate};
+`
+
+const ProjectLink = styled.a`
+  width: min-content;
+`
+
+const ProjectTechnologies = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 0.5rem;
+  bottom: 1rem;
+  right: 1rem;
+`
+
+const ProjectTechnology = styled.span`
+  font-family: ${theme.spaceMono};
+  font-size: ${theme.fontSize1};
+  color: ${theme.slate};
 `
 
 const SeeMore = styled.a`
@@ -72,10 +110,20 @@ export function Projects() {
     <AppSection>
       <SectionTitle number={3} text="Projects" />
       <ProjectsContainer>
-        <Project />
-        <Project />
-        <Project />
-        <Project />
+        {projects.map((project, index) => (
+          <Project key={index}>
+            <ProjectTitle>{project.title}</ProjectTitle>
+            <ProjectDescription>{project.description}</ProjectDescription>
+            <ProjectLink href={project.link} target="_blank">
+              <Button>Repository</Button>
+            </ProjectLink>
+            <ProjectTechnologies>
+              {project.technologies.map((technology, index) => (
+                <ProjectTechnology key={index}>{technology}</ProjectTechnology>
+              ))}
+            </ProjectTechnologies>
+          </Project>
+        ))}
         <SeeMore
           href="https://github.com/sergiopmdeveloper?tab=repositories"
           target="_blank"
