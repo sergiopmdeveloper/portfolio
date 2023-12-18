@@ -26,11 +26,27 @@ const ProjectsContainer = styled.div`
     background-color: ${theme.green};
     border-radius: 20px;
   }
+
+  @media (width <= ${theme.smallLaptop}) {
+    height: 17.5rem;
+  }
+
+  @media (width <= ${theme.tablet}) {
+    height: 15rem;
+  }
+
+  @media (width <= ${theme.largeMobile}) {
+    height: 20rem;
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    height: 22.5rem;
+  }
 `
 
 const Project = styled.div`
   position: relative;
-  min-width: 30rem;
+  min-width: 32.5rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -39,18 +55,50 @@ const Project = styled.div`
   border-radius: 0.5rem;
   box-sizing: border-box;
   padding: 1.5rem;
+
+  @media (width <= ${theme.smallLaptop}) {
+    min-width: 25rem;
+  }
+
+  @media (width <= ${theme.tablet}) {
+    min-width: 22.5rem;
+  }
+
+  @media (width <= ${theme.largeMobile}) {
+    min-width: 20rem;
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    min-width: 100%;
+  }
 `
 
 const ProjectTitle = styled.h2`
   font-family: ${theme.roboto};
   font-size: ${theme.fontSize6};
   color: ${theme.white};
+
+  @media (width <= ${theme.smallLaptop}) {
+    font-size: ${theme.fontSize5};
+  }
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize4};
+  }
 `
 
 const ProjectDescription = styled.p`
   font-family: ${theme.roboto};
   font-size: ${theme.fontSize4};
   color: ${theme.lightSlate};
+
+  @media (width <= ${theme.smallLaptop}) {
+    font-size: ${theme.fontSize3};
+  }
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize2};
+  }
 `
 
 const ProjectLink = styled.a`
@@ -63,6 +111,10 @@ const ProjectTechnologies = styled.div`
   gap: 0.5rem;
   bottom: 1rem;
   right: 1rem;
+
+  @media (width <= ${theme.largeMobile}) {
+    position: initial;
+  }
 `
 
 const ProjectTechnology = styled.span`
@@ -72,7 +124,6 @@ const ProjectTechnology = styled.span`
 `
 
 const SeeMore = styled.a`
-  height: 100%;
   padding: 0 1rem;
   color: ${theme.lightestSlate};
   background-color: ${theme.lightestNavy};
