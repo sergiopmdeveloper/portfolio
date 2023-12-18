@@ -19,6 +19,7 @@ const translucentColors = {
 
 // Darkened colors
 const darkenedColors = {
+  darkenedLightestNavy: '#1C2A43',
   darkenedGreen: '#00b187',
 }
 

@@ -58,5 +58,3 @@ export const SectionTitle = forwardRef<HTMLDivElement, SectionTitleProps>(
     )
   }
 )
-
-export default SectionTitle
