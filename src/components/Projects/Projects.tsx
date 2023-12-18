@@ -14,7 +14,7 @@ const ProjectsContainer = styled.div`
   overflow-x: scroll;
 
   &::-webkit-scrollbar {
-    height: 0.5rem;
+    height: 0.3rem;
   }
 
   &::-webkit-scrollbar-track {
@@ -26,6 +26,9 @@ const ProjectsContainer = styled.div`
     background-color: ${theme.green};
     border-radius: 20px;
   }
+
+  scrollbar-width: thin;
+  scrollbar-color: ${theme.green} rgba(0, 0, 0, 0.2);
 
   @media (width <= ${theme.smallLaptop}) {
     height: 17.5rem;
