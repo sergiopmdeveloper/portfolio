@@ -1,8 +1,15 @@
 import SectionTitle from '../SectionTitle'
 import { Button } from '../../ui/Button'
+import { useRef, useLayoutEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styled from 'styled-components'
 import { theme, AppSection } from '../../styles'
 import { projects } from '../../content/projects'
+
+// Register scroll trigger plugin
+
+gsap.registerPlugin(ScrollTrigger)
 
 // Styled components
 
@@ -159,11 +166,45 @@ const SeeMore = styled.a`
   }
 `
 
+/**
+ * Renders the Projects component.
+ *
+ * @returns The rendered Projects component.
+ */
 export function Projects() {
+  const sectionTitleRef = useRef<HTMLDivElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    if (sectionTitleRef.current && projectsRef.current) {
+      gsap.fromTo(
+        sectionTitleRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          scrollTrigger: sectionTitleRef.current,
+        }
+      )
+
+      gsap.fromTo(
+        projectsRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          scrollTrigger: projectsRef.current,
+        }
+      )
+    }
+  }, [])
+
   return (
     <AppSection>
-      <SectionTitle number={3} text="Projects" />
-      <ProjectsContainer>
+      <SectionTitle number={3} text="Projects" ref={sectionTitleRef} />
+      <ProjectsContainer ref={projectsRef}>
         {projects.map((project, index) => (
           <Project key={index}>
             <ProjectTitle>{project.title}</ProjectTitle>
