@@ -22,7 +22,7 @@ export const Button = styled.button`
     color 0.2s;
 
   &:hover {
-    background-color: ${theme.lightNavy};
+    background-color: ${theme.darkenedLightestNavy};
     color: ${theme.green};
     transition:
       background-color 0.2s,
@@ -30,7 +30,7 @@ export const Button = styled.button`
   }
 
   &:active {
-    background-color: ${theme.lightNavy};
+    background-color: ${theme.darkenedLightestNavy};
     color: ${theme.green};
     transition:
       background-color 0.2s,

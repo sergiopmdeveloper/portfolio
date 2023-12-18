@@ -89,7 +89,7 @@ const SeeMore = styled.a`
     color 0.2s;
 
   &:hover {
-    background-color: ${theme.lightNavy};
+    background-color: ${theme.darkenedLightestNavy};
     color: ${theme.green};
     transition:
       background-color 0.2s,
@@ -97,7 +97,7 @@ const SeeMore = styled.a`
   }
 
   &:active {
-    background-color: ${theme.lightNavy};
+    background-color: ${theme.darkenedLightestNavy};
     color: ${theme.green};
     transition:
       background-color 0.2s,
