@@ -1,4 +1,4 @@
-import SectionTitle from '../SectionTitle'
+import { SectionTitle } from '../SectionTitle'
 import { Project } from './Project'
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
