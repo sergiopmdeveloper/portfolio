@@ -105,6 +105,12 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     cursor: pointer;
   }
+
+  input {
+    border: none;
+    outline: none;
+    padding-left: 0.8rem;
+  }
 `
 
 // Global styled components
