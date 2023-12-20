@@ -109,7 +109,20 @@ export const GlobalStyles = createGlobalStyle`
   input {
     border: none;
     outline: none;
+    padding: 0 0.8rem 0 0.8rem;
+    box-sizing: border-box;
+  }
+
+  select {
+    border: none;
+    outline: none;
     padding-left: 0.8rem;
+  }
+
+  textarea {
+    border: none;
+    outline: none;
+    padding: 0.8rem;
   }
 `
 
