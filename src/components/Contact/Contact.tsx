@@ -2,6 +2,7 @@ import { SectionTitle } from '../SectionTitle'
 import { TextField, DropdownField, LargeTextField } from './Field'
 import { EmailIllustration } from '../../icons/EmailIllustration'
 import { Button } from '../../ui/Button'
+import { useRef, useLayoutEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -9,8 +10,14 @@ import {
   type ContactSchemaType,
   type ContactData,
 } from '../../validation/contact'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import styled from 'styled-components'
 import { theme, AppSection } from '../../styles'
+
+// Register scroll trigger plugin
+
+gsap.registerPlugin(ScrollTrigger)
 
 // Content
 
@@ -83,6 +90,9 @@ const FormTitle = styled.h2`
  * @returns The rendered contact section.
  */
 export function Contact() {
+  const sectionTitleRef = useRef(null)
+  const contactRef = useRef(null)
+
   const {
     register,
     handleSubmit,
@@ -90,6 +100,32 @@ export function Contact() {
   } = useForm<ContactSchemaType>({
     resolver: zodResolver(ContactSchema),
   })
+
+  useLayoutEffect(() => {
+    if (sectionTitleRef && contactRef.current) {
+      gsap.fromTo(
+        sectionTitleRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          scrollTrigger: sectionTitleRef.current,
+        }
+      )
+
+      gsap.fromTo(
+        contactRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          scrollTrigger: contactRef.current,
+        }
+      )
+    }
+  }, [])
 
   /**
    * Sends an email with the provided data.
@@ -102,8 +138,8 @@ export function Contact() {
 
   return (
     <AppSection id="contact">
-      <SectionTitle number={4} text="Contact" />
-      <ContactContainer>
+      <SectionTitle number={4} text="Contact" ref={sectionTitleRef} />
+      <ContactContainer ref={contactRef}>
         <FormTitle>Get in touch</FormTitle>
         <ContactBlock>
           <FormBlock onSubmit={handleSubmit(sendEmail)}>
