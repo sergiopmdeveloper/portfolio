@@ -1,5 +1,13 @@
 import { SectionTitle } from '../SectionTitle'
 import { TextField, DropdownField, LargeTextField } from './Field'
+import { Button } from '../../ui/Button'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import {
+  ContactSchema,
+  type ContactSchemaType,
+  type ContactData,
+} from '../../validation/contact'
 import styled from 'styled-components'
 import { theme, AppSection } from '../../styles'
 
@@ -26,7 +34,7 @@ const ContactBlock = styled.div`
   justify-content: space-between;
 `
 
-const FormBlock = styled.div`
+const FormBlock = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -40,17 +48,51 @@ const FormTitle = styled.h2`
   margin-bottom: 2rem;
 `
 
+/**
+ * Renders the contact section.
+ *
+ * @returns The rendered contact section.
+ */
 export function Contact() {
+  const { register, handleSubmit } = useForm<ContactSchemaType>({
+    resolver: zodResolver(ContactSchema),
+  })
+
+  /**
+   * Sends an email with the provided data.
+   *
+   * @param {ContactData} data - The data to be sent in the email.
+   */
+  const sendEmail: SubmitHandler<ContactSchemaType> = (data: ContactData) => {
+    console.log(data)
+  }
+
   return (
     <AppSection id="contact">
       <SectionTitle number={4} text="Contact" />
       <ContactContainer>
         <FormTitle>Get in touch</FormTitle>
         <ContactBlock>
-          <FormBlock>
-            <TextField label="Email" />
-            <DropdownField options={options} />
-            <LargeTextField label="Message" />
+          <FormBlock onSubmit={handleSubmit(sendEmail)}>
+            <TextField
+              register={register}
+              label="Email"
+              value="email"
+              placeholder="Your email..."
+            />
+            <DropdownField
+              register={register}
+              label="Subject"
+              value="subject"
+              options={options}
+            />
+            <LargeTextField
+              register={register}
+              label="Message"
+              value="message"
+              placeholder="Your message..."
+            />
+            <Button type="submit">Send</Button>
           </FormBlock>
         </ContactBlock>
       </ContactContainer>
