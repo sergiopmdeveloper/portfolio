@@ -67,7 +67,11 @@ const FormTitle = styled.h2`
  * @returns The rendered contact section.
  */
 export function Contact() {
-  const { register, handleSubmit } = useForm<ContactSchemaType>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ContactSchemaType>({
     resolver: zodResolver(ContactSchema),
   })
 
@@ -92,18 +96,21 @@ export function Contact() {
               label="Email"
               value="email"
               placeholder="Your email..."
+              error={errors.email?.message}
             />
             <DropdownField
               register={register}
               label="Subject"
               value="subject"
               options={options}
+              error={errors.subject?.message}
             />
             <LargeTextField
               register={register}
               label="Message"
               value="message"
               placeholder="Your message..."
+              error={errors.message?.message}
             />
             <Button type="submit">Send</Button>
           </FormBlock>

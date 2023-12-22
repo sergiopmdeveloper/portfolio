@@ -3,9 +3,9 @@ import * as Z from 'zod'
 // Contact form validation schema
 
 export const ContactSchema = Z.object({
-  email: Z.string().email('Please enter a valid email address'),
+  email: Z.string().min(1, 'Required').email('Invalid email'),
   subject: Z.string().min(1, 'Required'),
-  message: Z.string(),
+  message: Z.string().min(1, 'Required'),
 })
 
 // Types

@@ -10,6 +10,7 @@ type TextFieldProps = {
   label: string
   value: string
   placeholder: string
+  error: string | undefined
 }
 
 type DropdownFieldProps = {
@@ -17,6 +18,7 @@ type DropdownFieldProps = {
   label: string
   value: string
   options: string[]
+  error: string | undefined
 }
 
 // Styled components
@@ -25,7 +27,8 @@ const FieldContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.8rem;
+  position: relative;
 `
 
 const Label = styled.label`
@@ -66,6 +69,19 @@ const LargeTextInput = styled.textarea`
   box-sizing: border-box;
 `
 
+const FieldError = styled.h1`
+  font-family: ${theme.spaceMono};
+  font-size: ${theme.fontSize1};
+  font-weight: 400;
+  color: red;
+  background-color: lightCoral;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+`
+
 /**
  * Renders a form field with a label and input.
  *
@@ -74,6 +90,7 @@ const LargeTextInput = styled.textarea`
  * @param {string} props.label - The label for the field.
  * @param {string} props.value - The value for the field.
  * @param {string} props.placeholder - The placeholder for the field.
+ * @param {string} props.error - The error for the field.
  *
  * @returns The rendered form field component.
  */
@@ -82,6 +99,7 @@ export function TextField({
   label,
   value,
   placeholder,
+  error,
 }: TextFieldProps) {
   return (
     <FieldContainer>
@@ -91,6 +109,7 @@ export function TextField({
         placeholder={placeholder}
         {...register(value as keyof ContactData)}
       />
+      {error && <FieldError>{error}</FieldError>}
     </FieldContainer>
   )
 }
@@ -103,6 +122,7 @@ export function TextField({
  * @param {string} props.label - The label for the field.
  * @param {string} props.value - The value for the field.
  * @param {string[]} props.options - The options for the dropdown.
+ * @param {string} props.error - The error for the field.
  *
  * @returns The rendered form field component.
  */
@@ -111,6 +131,7 @@ export function DropdownField({
   label,
   value,
   options,
+  error,
 }: DropdownFieldProps) {
   return (
     <FieldContainer>
@@ -125,6 +146,7 @@ export function DropdownField({
           </option>
         ))}
       </SelectInput>
+      {error && <FieldError>{error}</FieldError>}
     </FieldContainer>
   )
 }
@@ -137,6 +159,7 @@ export function DropdownField({
  * @param {string} props.label - The label for the field.
  * @param {string} props.value - The value for the field.
  * @param {string} props.placeholder - The placeholder for the field.
+ * @param {string} props.error - The error for the field.
  *
  * @returns The rendered large form field component.
  */
@@ -145,6 +168,7 @@ export function LargeTextField({
   label,
   value,
   placeholder,
+  error,
 }: TextFieldProps) {
   return (
     <FieldContainer>
@@ -153,6 +177,7 @@ export function LargeTextField({
         placeholder={placeholder}
         {...register(value as keyof ContactData)}
       />
+      {error && <FieldError>{error}</FieldError>}
     </FieldContainer>
   )
 }
