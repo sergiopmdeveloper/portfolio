@@ -40,6 +40,10 @@ const FormBlock = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media (width <= ${theme.smallLaptop}) {
+    width: 100%;
+  }
 `
 
 const IllustrationBlock = styled.div`
@@ -47,6 +51,10 @@ const IllustrationBlock = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+
+  @media (width <= ${theme.smallLaptop}) {
+    display: none;
+  }
 `
 
 const StyledEmailIllustration = styled(EmailIllustration)`
@@ -59,6 +67,14 @@ const FormTitle = styled.h2`
   font-size: ${theme.fontSize7};
   color: ${theme.white};
   margin-bottom: 2rem;
+
+  @media (width <= ${theme.smallLaptop}) {
+    font-size: ${theme.fontSize6};
+  }
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize5};
+  }
 `
 
 /**

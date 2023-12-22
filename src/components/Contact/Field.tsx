@@ -35,6 +35,10 @@ const Label = styled.label`
   font-family: ${theme.roboto};
   font-size: ${theme.fontSize3};
   color: ${theme.lightSlate};
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize2};
+  }
 `
 
 const TextInput = styled.input`
@@ -45,6 +49,14 @@ const TextInput = styled.input`
   color: ${theme.navy};
   background-color: ${theme.lightestSlate};
   border-radius: 0.5rem;
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize2};
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    font-size: ${theme.fontSize1};
+  }
 `
 
 const SelectInput = styled.select`
@@ -56,6 +68,14 @@ const SelectInput = styled.select`
   background-color: ${theme.lightestSlate};
   border-radius: 0.5rem;
   cursor: pointer;
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize2};
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    font-size: ${theme.fontSize1};
+  }
 `
 
 const LargeTextInput = styled.textarea`
@@ -67,9 +87,17 @@ const LargeTextInput = styled.textarea`
   background-color: ${theme.lightestSlate};
   border-radius: 0.5rem;
   box-sizing: border-box;
+
+  @media (width <= ${theme.tablet}) {
+    font-size: ${theme.fontSize2};
+  }
+
+  @media (width <= ${theme.smallMobile}) {
+    font-size: ${theme.fontSize1};
+  }
 `
 
-const FieldError = styled.h1`
+const FieldError = styled.span`
   font-family: ${theme.spaceMono};
   font-size: ${theme.fontSize1};
   font-weight: 400;
