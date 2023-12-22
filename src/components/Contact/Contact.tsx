@@ -1,5 +1,6 @@
 import { SectionTitle } from '../SectionTitle'
 import { TextField, DropdownField, LargeTextField } from './Field'
+import { EmailIllustration } from '../../icons/EmailIllustration'
 import { Button } from '../../ui/Button'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -29,16 +30,28 @@ const ContactContainer = styled.div`
 `
 
 const ContactBlock = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 `
 
 const FormBlock = styled.form`
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+`
+
+const IllustrationBlock = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+`
+
+const StyledEmailIllustration = styled(EmailIllustration)`
+  width: 55%;
+  margin-right: 5rem;
 `
 
 const FormTitle = styled.h2`
@@ -94,6 +107,9 @@ export function Contact() {
             />
             <Button type="submit">Send</Button>
           </FormBlock>
+          <IllustrationBlock>
+            <StyledEmailIllustration />
+          </IllustrationBlock>
         </ContactBlock>
       </ContactContainer>
     </AppSection>
