@@ -10,7 +10,7 @@ type ButtonWithIconProps = {
 
 // Styled components
 
-export const Button = styled.button`
+export const Button = styled.button<{ $loading?: boolean }>`
   font-family: ${theme.spaceMono};
   font-size: ${theme.fontSize4};
   color: ${theme.lightestSlate};
@@ -20,6 +20,13 @@ export const Button = styled.button`
   transition:
     background-color 0.2s,
     color 0.2s;
+
+  ${({ $loading }) =>
+    $loading &&
+    `
+    opacity: 0.5;
+    pointer-events: none;
+  `}
 
   &:hover {
     background-color: ${theme.darkenedLightestNavy};
