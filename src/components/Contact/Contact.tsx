@@ -2,7 +2,7 @@ import { SectionTitle } from '../SectionTitle'
 import { TextField, DropdownField, LargeTextField } from './Field'
 import { EmailIllustration } from '../../icons/EmailIllustration'
 import { Button } from '../../ui/Button'
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useLayoutEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -12,6 +12,7 @@ import {
 } from '../../validation/contact'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import emailjs from '@emailjs/browser'
 import styled from 'styled-components'
 import { theme, AppSection } from '../../styles'
 
@@ -84,18 +85,49 @@ const FormTitle = styled.h2`
   }
 `
 
+const FormSuccessful = styled.span`
+  font-family: ${theme.spaceMono};
+  font-size: ${theme.fontSize1};
+  font-weight: 400;
+  color: green;
+  background-color: lightGreen;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: -5%;
+  right: 0;
+`
+
+const FormError = styled.span`
+  font-family: ${theme.spaceMono};
+  font-size: ${theme.fontSize1};
+  font-weight: 400;
+  color: red;
+  background-color: lightCoral;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: -5%;
+  right: 0;
+`
+
 /**
  * Renders the contact section.
  *
  * @returns The rendered contact section.
  */
 export function Contact() {
+  const [sending, setSending] = useState(false)
+  const [successful, setSuccessful] = useState(false)
+  const [error, setError] = useState(false)
+
   const sectionTitleRef = useRef(null)
   const contactRef = useRef(null)
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ContactSchemaType>({
     resolver: zodResolver(ContactSchema),
@@ -133,7 +165,29 @@ export function Contact() {
    * @param {ContactData} data - The data to be sent in the email.
    */
   const sendEmail: SubmitHandler<ContactSchemaType> = (data: ContactData) => {
-    console.log(data)
+    setSuccessful(false)
+    setError(false)
+    setSending(true)
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAIL_SERVICE_ID,
+        import.meta.env.VITE_EMAIL_TEMPLATE_ID,
+        data,
+        import.meta.env.VITE_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setSuccessful(true)
+          reset()
+        },
+        () => {
+          setError(true)
+        }
+      )
+      .finally(() => {
+        setSending(false)
+      })
   }
 
   return (
@@ -164,12 +218,16 @@ export function Contact() {
               placeholder="Your message..."
               error={errors.message?.message}
             />
-            <Button type="submit">Send</Button>
+            <Button type="submit" disabled={sending} $loading={sending}>
+              {sending ? 'Sending...' : 'Send'}
+            </Button>
           </FormBlock>
           <IllustrationBlock>
             <StyledEmailIllustration />
           </IllustrationBlock>
         </ContactBlock>
+        {successful && <FormSuccessful>Done!</FormSuccessful>}
+        {error && <FormError>Error</FormError>}
       </ContactContainer>
     </AppSection>
   )
